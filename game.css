@@ -1,10 +1,23 @@
+.game__security-hover{
+    background-color: transparent;
+    position: absolute;
+    width: 97vw;
+    height: 90vh;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+
 .container {
     text-align: center;
 }
 .board {
     display: grid;
-    grid-template-columns: repeat(3, 70px);
-    grid-template-rows: repeat(3, 70px);
+    grid-template-columns: repeat(var(--size), 70px);
+    grid-template-rows: repeat(var(--size), 70px);
     gap: 1px;
     margin: 20px 0 20px 0;
 }
