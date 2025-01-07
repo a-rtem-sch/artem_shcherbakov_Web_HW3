@@ -15,7 +15,7 @@ function generateCells() {
         board.appendChild(cell)
     }
 }
-//
+
 // Генерация ячеек
 generateCells()
 
