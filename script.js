@@ -1,4 +1,4 @@
-const board = document.querySelector('.board')
+const board = document.querySelector('.game__board')
 
 // ВНИМАНИЕ! При изменении количества ячеек часть доски теряет функционал. Это исправимо, но требует серьезных
 // переработок состояний выигрыша, однако по ТЗ достаточно лишь реализовать механизм динамичного количества ячеек
@@ -10,7 +10,7 @@ board.style.setProperty('--size', size)
 function generateCells() {
     for (let i = 0; i < size * size; i++) {
         const cell = document.createElement('div')
-        cell.classList.add('cell')
+        cell.classList.add('game__board__cell')
         cell.setAttribute('data-index', i)
         board.appendChild(cell)
     }
@@ -19,11 +19,11 @@ function generateCells() {
 // Генерация ячеек
 generateCells()
 
-const cells = document.querySelectorAll('.cell')
+const cells = document.querySelectorAll('.game__board__cell')
 const statusText = document.getElementById('status')
 const resetButton = document.getElementById('reset')
 // защитная крышка
-const securityHover = document.querySelector('.game__security-hover')
+const securityHover = document.querySelector('.game__security--hover')
 
 if (size !== 3) {
     securityHover.style.display = 'flex'
@@ -87,6 +87,10 @@ function checkForWinner() {
     // последствия выигрыша - завершаенм игру
     if (roundWon) {
         statusText.textContent = `Игрок ${currentPlayer} выиграл!`
+        fireworkInterval = setInterval(createFirework, 150)
+        setTimeout(() => {
+            clearInterval(fireworkInterval) // Останавливаем создание новых фейерверков
+        }, 1500)
         gameActive = false
         return
     }
@@ -102,6 +106,31 @@ function checkForWinner() {
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X'
     statusText.textContent = `Ход игрока ${currentPlayer}`
 }
+
+let fireworkInterval
+// слегка позаимствованный код, но весь переписан лично мной под мои нужды
+function createFirework() {
+    const firework = document.createElement('div')
+    firework.classList.add('firework')
+    const centerX = window.innerWidth / 2
+    const centerY = window.innerHeight / 2
+
+    const areaWidth = 500
+    const areaHeight = 500
+
+    const x = centerX - areaWidth / 2 + Math.random() * areaWidth
+    const y = centerY - areaHeight / 2 + Math.random() * areaHeight
+
+    firework.style.left = `${x}px`
+    firework.style.top = `${y}px`
+    firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
+    document.body.appendChild(firework)
+
+    setTimeout(() => {
+        firework.remove()
+    }, 1000)
+}
+
 
 // перезапуск игры
 function resetGame() {

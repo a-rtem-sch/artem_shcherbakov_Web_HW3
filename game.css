@@ -1,4 +1,4 @@
-.game__security-hover{
+.game__security--hover{
     background-color: transparent;
     position: absolute;
     width: 97vw;
@@ -11,17 +11,17 @@
 }
 
 
-.container {
+.game__container {
     text-align: center;
 }
-.board {
+.game__board {
     display: grid;
     grid-template-columns: repeat(var(--size), 70px);
     grid-template-rows: repeat(var(--size), 70px);
     gap: 1px;
     margin: 20px 0 20px 0;
 }
-.cell {
+.game__board__cell {
     width: 70px;
     height: 70px;
     background-color: #dbdbdb;
@@ -33,10 +33,10 @@
     cursor: pointer;
 }
 /* все элементы одновременно cell и X/O */
-.cell.X {
+.game__board__cell.X {
     color: #ff2600;
 }
-.cell.O {
+.game__board__cell.O {
     color: #008cff;
 }
 .X, .O{
@@ -52,4 +52,23 @@
 #status {
     margin-top: 20px;
     font-size: 1.2rem;
+}
+
+.firework {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: explode 1s ease-out forwards;
+}
+@keyframes explode {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(10);
+        opacity: 0;
+    }
 }
