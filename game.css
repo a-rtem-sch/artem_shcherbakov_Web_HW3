@@ -1,0 +1,42 @@
+.container {
+    text-align: center;
+}
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 70px);
+    grid-template-rows: repeat(3, 70px);
+    gap: 1px;
+    margin: 20px 0 20px 0;
+}
+.cell {
+    width: 70px;
+    height: 70px;
+    background-color: #dbdbdb;
+    border: 2px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+}
+/* все элементы одновременно cell и X/O */
+.cell.X {
+    color: #ff2600;
+}
+.cell.O {
+    color: #008cff;
+}
+.X, .O{
+    background-color: #cacaca;
+}
+
+#reset {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+#status {
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
