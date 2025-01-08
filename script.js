@@ -10,7 +10,7 @@ board.style.setProperty('--size', size)
 function generateCells() {
     for (let i = 0; i < size * size; i++) {
         const cell = document.createElement('div')
-        cell.classList.add('game__board__cell')
+        cell.classList.add('game__board-cell')
         cell.setAttribute('data-index', i)
         board.appendChild(cell)
     }
@@ -19,11 +19,11 @@ function generateCells() {
 // Генерация ячеек
 generateCells()
 
-const cells = document.querySelectorAll('.game__board__cell')
+const cells = document.querySelectorAll('.game__board-cell')
 const statusText = document.getElementById('status')
 const resetButton = document.getElementById('reset')
 // защитная крышка
-const securityHover = document.querySelector('.game__security--hover')
+const securityHover = document.querySelector('.game__security-hover')
 
 if (size !== 3) {
     securityHover.style.display = 'flex'
@@ -130,7 +130,6 @@ function createFirework() {
         firework.remove()
     }, 1000)
 }
-
 
 // перезапуск игры
 function resetGame() {
