@@ -31,6 +31,10 @@
     align-items: center;
     font-size: 2rem;
     cursor: pointer;
+    transition: 0.2s;
+}
+.game__board-cell:hover{
+    background-color: #d0d0d0;
 }
 /* все элементы одновременно cell и X/O */
 .game__board-cell.X {
@@ -48,6 +52,7 @@
     padding: 10px 20px;
     font-size: 1rem;
     cursor: pointer;
+    transition: 0.3s;
 }
 #status {
     margin-top: 20px;
